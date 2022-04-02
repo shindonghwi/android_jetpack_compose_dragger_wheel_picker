@@ -1,7 +1,6 @@
 package com.example.jetpackcompose_draggerwheelpicker
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
@@ -12,7 +11,6 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
@@ -25,9 +23,7 @@ import dev.chrisbanes.snapper.ExperimentalSnapperApi
 import dev.chrisbanes.snapper.LazyListSnapperLayoutInfo
 import dev.chrisbanes.snapper.rememberLazyListSnapperLayoutInfo
 import dev.chrisbanes.snapper.rememberSnapperFlingBehavior
-import kotlinx.coroutines.delay
 import kotlin.math.abs
-import kotlin.random.Random
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,6 +43,8 @@ class MainActivity : ComponentActivity() {
                             .fillMaxWidth()
                             .padding(horizontal = 20.dp),
                         pickerMaxHeight = 250.dp,
+                        defaultTextStyle = MaterialTheme.typography.body1,
+                        centerTextStyle = MaterialTheme.typography.h6,
                         lists = lists
                     )
                 }
@@ -59,8 +57,12 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun WheelPicker(
     modifier: Modifier,
-    pickerMaxHeight: Dp,
+    pickerMaxHeight: Dp = 250.dp,
     lists: ArrayList<String>,
+    defaultTextStyle: androidx.compose.ui.text.TextStyle = MaterialTheme.typography.body1,
+    centerTextStyle: androidx.compose.ui.text.TextStyle = MaterialTheme.typography.h6,
+    defaultTextColor: Color = Color.Black.copy(alpha = 0.5f),
+    centerTextColor: Color = Color.Black.copy(alpha = 1.0f),
     selectedBackgroundColor: Color = Color.Black.copy(alpha = 0.1f)
 ) {
 
@@ -108,11 +110,10 @@ fun WheelPicker(
                         .scale(
                             scaleX = if (curTextIsCenter) 1.2f else if (curTextIsCenterDiffer1) 1.0f else 0.8f,
                             scaleY = if (curTextIsCenter) 1.2f else if (curTextIsCenterDiffer1) 1.0f else 0.8f
-                        )
-                    ,
+                        ),
                     text = if (lists[index].toInt() == 0) "표시안함" else "${lists[index]}년",
-                    style = MaterialTheme.typography.h6,
-                    color = if (curTextIsCenter) Color.Black else if (curTextIsCenterDiffer1) Color.Black.copy(alpha = 0.3f) else Color.Black.copy(alpha = 0.1f),
+                    style = if (curTextIsCenter) centerTextStyle else defaultTextStyle,
+                    color = if (curTextIsCenter) centerTextColor else defaultTextColor,
                     textAlign = TextAlign.Center
                 )
 
