@@ -1,6 +1,7 @@
 package com.example.jetpackcompose_draggerwheelpicker
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
@@ -64,11 +65,22 @@ fun WheelPicker(
     selectedBackgroundColor: Color = Color.Black.copy(alpha = 0.1f)
 ) {
 
-    val lazyListState = rememberLazyListState(
-        initialFirstVisibleItemIndex = Int.MAX_VALUE / 2 - 25,
-    )
-    val layoutInfo: LazyListSnapperLayoutInfo = rememberLazyListSnapperLayoutInfo(lazyListState)
-    var currentIndex: Int?
+    /**
+     * LazyColumn에서 items는 일정 이상의 범위만 렌더링 한다.
+     *
+     * items의 count 갯수를 Int의 최대 범위인 2147483647 까지로 선정하고, 초기 위치를 중간으로 잡는다.
+     *
+     * 그럼 사용자가 위,아래로 스크롤할때 양쪽다 스크롤이 가능한 상태가 된다.
+     * 2,147,483,647 / 2 => 1,073,741,823 - 23 = 1,073,741,820
+     *
+     * -23을 하는 이유:
+     *     -> 끝자리를 0으로 맞추어 현재 인덱스를 찾기위함.
+     *
+     * */
+
+    val lazyListState = rememberLazyListState(initialFirstVisibleItemIndex = (Int.MAX_VALUE / 2.0).toInt() - 23)
+    val layoutInfo: LazyListSnapperLayoutInfo = rememberLazyListSnapperLayoutInfo(lazyListState) // wheel picker 의 layout 정보
+    var currentIndex: Int? // 현재 선택된 아이템의 인덱스
 
     Box(
         modifier = modifier,
