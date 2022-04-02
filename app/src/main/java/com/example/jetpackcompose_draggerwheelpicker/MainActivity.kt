@@ -20,7 +20,6 @@ import androidx.compose.ui.unit.dp
 import com.example.jetpackcompose_draggerwheelpicker.ui.theme.JetpackCompose_DraggerWheelPickerTheme
 import dev.chrisbanes.snapper.ExperimentalSnapperApi
 import dev.chrisbanes.snapper.rememberSnapperFlingBehavior
-import kotlin.random.Random
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +36,8 @@ class MainActivity : ComponentActivity() {
 
                     WheelPicker(
                         modifier = Modifier
-                            .fillMaxWidth(),
+                            .fillMaxWidth()
+                            .padding(horizontal = 20.dp),
                         pickerMaxHeight = 250.dp,
                         lists = lists
                     )
@@ -47,21 +47,13 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-
-// 랜덤 칼라 가져오기
-fun Color.Companion.random(): Color {
-    val red = Random.nextInt(256)
-    val green = Random.nextInt(256)
-    val blue = Random.nextInt(256)
-    return Color(red, green, blue)
-}
-
 @OptIn(ExperimentalSnapperApi::class)
 @Composable
 fun WheelPicker(
     modifier: Modifier,
     pickerMaxHeight: Dp,
-    lists: ArrayList<String>
+    lists: ArrayList<String>,
+    selectedBackgroundColor: Color = Color.Black.copy(alpha = 0.1f)
 ) {
 
     val lazyListState = rememberLazyListState(
@@ -104,7 +96,7 @@ fun WheelPicker(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(pickerMaxHeight * 0.215f)
-                .background(Color.Blue.copy(alpha = 0.3f))
+                .background(selectedBackgroundColor)
         )
     }
 }
