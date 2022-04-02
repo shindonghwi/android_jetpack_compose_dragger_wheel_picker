@@ -32,10 +32,8 @@ class MainActivity : ComponentActivity() {
             JetpackCompose_DraggerWheelPickerTheme {
                 Surface(color = MaterialTheme.colors.background) {
 
-                    val lists = arrayListOf<String>().apply {
-                        repeat(100) {
-                            add("$it")
-                        }
+                    val lists = arrayListOf<Int>().apply {
+                        repeat(100) { add(it) }
                     }
 
                     WheelPicker(
@@ -58,7 +56,7 @@ class MainActivity : ComponentActivity() {
 fun WheelPicker(
     modifier: Modifier,
     pickerMaxHeight: Dp = 250.dp,
-    lists: ArrayList<String>,
+    lists: ArrayList<Int>,
     defaultTextStyle: androidx.compose.ui.text.TextStyle = MaterialTheme.typography.body1,
     centerTextStyle: androidx.compose.ui.text.TextStyle = MaterialTheme.typography.h6,
     defaultTextColor: Color = Color.Black.copy(alpha = 0.5f),
@@ -97,9 +95,9 @@ fun WheelPicker(
                     currentIndex = currentIndex!! + lists.size
                 }
 
-                val curTextIsCenter = currentIndex == lists[index].toInt()
-                val curTextIsCenterDiffer1 = currentIndex == abs(lists[index].toInt() - 1) || currentIndex == abs(lists[index].toInt() + 1)
-                val curTextIsCenterDiffer2 = currentIndex == abs(lists[index].toInt() - 2) || currentIndex == abs(lists[index].toInt() + 2)
+                val curTextIsCenter = currentIndex == lists[index]
+                val curTextIsCenterDiffer1 = currentIndex == abs(lists[index] - 1) || currentIndex == abs(lists[index] + 1)
+                val curTextIsCenterDiffer2 = currentIndex == abs(lists[index] - 2) || currentIndex == abs(lists[index] + 2)
 
                 Text(
                     modifier = Modifier
@@ -111,7 +109,7 @@ fun WheelPicker(
                             scaleX = if (curTextIsCenter) 1.2f else if (curTextIsCenterDiffer1) 1.0f else 0.8f,
                             scaleY = if (curTextIsCenter) 1.2f else if (curTextIsCenterDiffer1) 1.0f else 0.8f
                         ),
-                    text = if (lists[index].toInt() == 0) "표시안함" else "${lists[index]}년",
+                    text = if (lists[index] == 0) "표시안함" else "${lists[index]}년",
                     style = if (curTextIsCenter) centerTextStyle else defaultTextStyle,
                     color = if (curTextIsCenter) centerTextColor else defaultTextColor,
                     textAlign = TextAlign.Center
