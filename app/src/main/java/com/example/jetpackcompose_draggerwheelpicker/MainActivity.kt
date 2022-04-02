@@ -41,6 +41,7 @@ class MainActivity : ComponentActivity() {
                     WheelPicker(
                         modifier = Modifier
                             .fillMaxWidth()
+                            .background(Color.Yellow.copy(alpha = 0.2f))
                             .padding(all = 20.dp),
                         pickerMaxHeight = 250.dp,
                         defaultTextStyle = MaterialTheme.typography.body1,
@@ -64,7 +65,7 @@ fun WheelPicker(
     centerTextStyle: androidx.compose.ui.text.TextStyle = MaterialTheme.typography.h6,
     defaultTextColor: Color = Color.Black.copy(alpha = 0.4f),
     centerTextColor: Color = Color.Black.copy(alpha = 1.0f),
-    selectedBackgroundColor: Color = Color.Black.copy(alpha = 0.1f)
+    selectedBackgroundColor: Color = Color.Black.copy(alpha = 0.3f)
 ) {
     val lazyListState = rememberLazyListState(initialFirstVisibleItemIndex = (Int.MAX_VALUE / 2.0).toInt() - 25)
     val layoutInfo: LazyListSnapperLayoutInfo = rememberLazyListSnapperLayoutInfo(lazyListState) // wheel picker 의 layout 정보
