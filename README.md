@@ -2,6 +2,9 @@
 
 * 스크롤을해서 아이템을 선택 할 수 있는 픽커
 
+![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/45490440/161367843-9195bf9c-4adf-4d5f-a67b-4b7f5833b830.gif)
+
+```
 Copyright 2022 Shin Dong Hwi
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,3 +18,4 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+```
