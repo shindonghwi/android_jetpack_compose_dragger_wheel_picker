@@ -2,7 +2,17 @@
 
 * 스크롤을해서 아이템을 선택 할 수 있는 픽커
 
-![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/45490440/161367843-9195bf9c-4adf-4d5f-a67b-4b7f5833b830.gif)
+
+
+
+
+
+## Preview
+
+|           샘플            |          서비스            |
+:-------------------------:|:--------------------------:|
+![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/45490440/161367843-9195bf9c-4adf-4d5f-a67b-4b7f5833b830.gif)  |  ![ezgif com-gif-maker](https://user-images.githubusercontent.com/45490440/161385275-15db0cac-6278-4705-b981-3ad38c566ce8.gif)) 
+
 
 ```
 Copyright 2022 Shin Dong Hwi
