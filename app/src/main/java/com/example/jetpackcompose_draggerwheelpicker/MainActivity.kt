@@ -62,7 +62,7 @@ fun WheelPicker(
     lists: ArrayList<Int>,
     defaultTextStyle: androidx.compose.ui.text.TextStyle = MaterialTheme.typography.body1,
     centerTextStyle: androidx.compose.ui.text.TextStyle = MaterialTheme.typography.h6,
-    defaultTextColor: Color = Color.Black.copy(alpha = 0.5f),
+    defaultTextColor: Color = Color.Black.copy(alpha = 0.4f),
     centerTextColor: Color = Color.Black.copy(alpha = 1.0f),
     selectedBackgroundColor: Color = Color.Black.copy(alpha = 0.1f)
 ) {
@@ -109,7 +109,7 @@ fun WheelPicker(
                             scaleX = if (curTextIsCenter) 1.2f else if (curTextIsCenterDiffer1) 1.0f else 0.8f,
                             scaleY = if (curTextIsCenter) 1.2f else if (curTextIsCenterDiffer1) 1.0f else 0.8f
                         ),
-                    text = if (lists[index] == 0) "표시안함" else "${lists[index]}년",
+                    text = if (lists[index] == 0) "표시안함" else "${lists[index]}번 아이템",
                     style = if (curTextIsCenter) centerTextStyle else defaultTextStyle,
                     color = if (curTextIsCenter) centerTextColor else defaultTextColor,
                     textAlign = TextAlign.Center
